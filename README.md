@@ -19,7 +19,10 @@
 -login and check whether you data is coming properly of not 
 -navbar should update as soon as user logs in 
 -refactor your code to add contants file + create components folder 
-
+-you should not be able to access any other routes without login
+-if token is not present redirect it to login page
+-logout
+-profile page
 
 
 

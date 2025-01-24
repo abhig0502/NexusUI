@@ -11,6 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("Abhinav@123");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleLogin = async () => {
     try {
       const res = await axios.post(
@@ -29,6 +30,7 @@ const Login = () => {
     }
   };
 
+  
   return (
     <div className="flex justify-center my-11">
       <div className="card bg-base-300 w-96 shadow-xl">
