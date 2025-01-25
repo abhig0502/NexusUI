@@ -32,3 +32,8 @@ Body
     Route=/login => Login
     Route=/connections => connections
     Route=/profile => profile
+
+
+
+    -->you need to get the authentication state so that after login you won't be able to go back to the login page 
+       for reference use useauth hook take help from netflixGPT (do it later)
