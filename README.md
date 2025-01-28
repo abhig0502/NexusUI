@@ -21,8 +21,13 @@
 -refactor your code to add contants file + create components folder 
 -you should not be able to access any other routes without login
 -if token is not present redirect it to login page
--logout
--profile page
+-logout feature 
+-get the feed and add the feed in the store 
+-build the user card on feed 
+-edit profile feature (unable to call the api check it !!!!!)
+-show toast message on save of profile
+-New page -see all connections
+-New page -see all connection requests
 
 
 
