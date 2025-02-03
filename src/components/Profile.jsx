@@ -7,7 +7,7 @@ const Profile = () => {
   return (
     user && (
       <div>
-        <EditProfile  />
+        <EditProfile  user={user?.user}/>
       </div>
     )
   );

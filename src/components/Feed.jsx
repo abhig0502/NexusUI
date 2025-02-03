@@ -30,10 +30,22 @@ const Feed = () => {
     getFeed();
   }, []);
 
+  if (!feed) return;
+  if (feed.length <= 0) {
+    <div className="items-center text-4xl">
+      <h1>No feeds found !</h1>
+    </div>;
+  }
+
   return (
     feed && (
-      <div className="flex justify-center my-10">
-        <UserCard user={feed[0]} />
+      <div className="flex flex-row justify-center my-6 overflow-x-scroll">
+        <div className=" justify-center w-[400px] h-[600px]">
+          {feed.map((f, index) => (
+            <UserCard key={index} user={feed[index]} />
+          ))}
+          {/* <UserCard user={feed[0]} /> */}
+        </div>
       </div>
     )
   );

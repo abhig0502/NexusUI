@@ -12,7 +12,7 @@ const Navbar = () => {
   // console.log(user);
   const navigate = useNavigate();
   const dispatch=useDispatch();
-
+// console.log(user.user.photoUrl);
 
   const handleLogout = async () => {
     try {
@@ -45,7 +45,7 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar mr-7"
             >
               <div className="w-10 rounded-full ">
-                <img alt="Tailwind CSS Navbar component" src={user.photUrl} />
+                <img alt="Tailwind CSS Navbar component" src={user?.user?.photoUrl} />
               </div>
             </div>
             <ul
@@ -53,9 +53,13 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
+              <Link to="/" className="justify-between">
+                  Home
+                  <span className="badge"></span>
+                </Link>
                 <Link to="/profile" className="justify-between">
                   Profile
-                  <span className="badge">New</span>
+                  <span className="badge"></span>
                 </Link>
               </li>
               <li>
@@ -64,9 +68,7 @@ const Navbar = () => {
               <li>
                 <Link to ="/requests">Requests</Link>
               </li>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
+             
               <li>
                 <a onClick={handleLogout}>Logout</a>
               </li>

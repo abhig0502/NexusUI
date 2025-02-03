@@ -6,41 +6,49 @@ import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { addUserProfile } from "../utils/userProfileSlice";
+import { useNavigate } from "react-router-dom";
 
-const EditProfile = () => {
+const EditProfile = ({ user }) => {
   const dispatch = useDispatch();
-  const user = useSelector((store) => store.userProfile);
+  const user2 = useSelector((store) => store?.user);
+  console.log(user2);
 
-  const userProfile = async () => {
-    const res = await axios.get(BASE_URL + "/profile/view", {
-      withCredentials: true,
-    });
-    dispatch(addUserProfile(res?.data));
-  };
+  // const userProfile = async () => {
+  //   const res = await axios.get(BASE_URL + "/profile/view", {
+  //     withCredentials: true,
+  //   });
+  //   dispatch(addUserProfile(res?.data));
+  //   console.log(res?.data);
+  // };
 
-  useEffect(() => {
-    userProfile();
-  }, []);
+  // useEffect(() => {
+  //   userProfile();
+  // }, []);
 
-  const userData = { userData: user };
-  console.log(userData);
   // console.log(user);
+  // const userData = { userData: user };
+  // console.log(userData);
 
-  const [firstName, setFirstName] = useState(userData.userData.firstName || "");
-  const [lastName, setLastName] = useState(userData.userData.lastName || "");
-  const [photoUrl, setPhotoUrl] = useState(userData.userData.photoUrl || "");
-  const [age, setAge] = useState(userData.userData.age || "");
-  const [gender, setGender] = useState(userData.userData.gender || "");
-  const [about, setAbout] = useState(userData.userData.about || "");
+  console.log(user);
+
+  const [firstName, setFirstName] = useState(
+    user?.firstName || user2.firstName
+  );
+  const [lastName, setLastName] = useState(user?.lastName || user2.lastName);
+  const [photoUrl, setPhotoUrl] = useState(user?.photoUrl || user2.photoUrl);
+  const [age, setAge] = useState(user?.age || user2.age);
+  const [gender, setGender] = useState(user?.gender || user2.gender);
+  const [about, setAbout] = useState(user?.about || user2.about);
   const [error, setError] = useState("");
   const [showToast, setShowToast] = useState(false);
 
   //   console.log(user);
   const saveProfile = async () => {
     //Clear Errors
+   
     setError("");
     try {
-      const res = await axios.patch(
+      const res = await axios.put(
         BASE_URL + "/profile/edit",
         {
           firstName,
@@ -54,6 +62,7 @@ const EditProfile = () => {
       );
       dispatch(addUser(res?.data));
       console.log(res?.data);
+      navigate("/");
 
       setShowToast(true);
       setTimeout(() => {
@@ -63,7 +72,7 @@ const EditProfile = () => {
       setError(err.response);
     }
   };
-
+  const navigate=useNavigate();
   return (
     <>
       <div className="flex justify-center my-10">
